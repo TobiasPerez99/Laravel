@@ -1,12 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Portfolio</title>
-</head>
-<body>
-    <h1>portfolio</h1>
-</body>
-</html>
+@section('title', 'Portfolio')
+
+@extends('layout')
+
+@section('content')
+    <h1>Portfolio</h1>
+
+    <ul>
+        @forelse ($portfolio as $portfolioItem)
+
+            <li>{{ $portfolioItem['title'] }}</li>
+            
+        @empty
+       
+            <h1>no hay proyectos para mostrar</h1>
+
+        @endforelse
+
+    </ul>
+@endsection
