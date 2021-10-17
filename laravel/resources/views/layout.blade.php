@@ -6,7 +6,6 @@
         .active{
             color: red;
             text-decoration: none;
-            text-transform: uppercase;
         }
     </style>
 </head>
