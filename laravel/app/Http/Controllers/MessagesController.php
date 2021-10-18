@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MessageReceived;
+use GuzzleHttp\Psr7\Message;
+use Illuminate\Support\Facades\Mail;
 
 class MessagesController extends Controller
 {
     public function store(){
 
-       request()->validate([
+       $msg = request()->validate([
            'name' => 'required',
            'email' => 'required|email',
            'subject' => 'required',
@@ -18,7 +21,11 @@ class MessagesController extends Controller
 
        ]); 
 
-       return 'datos validados';
+//       Enviar Email
+
+        Mail::to('tobiasleonel77@gmail.com' )->queue(new MessageReceived($msg));
+
+        return 'Mensaje Enviado';
 
     }
 }
