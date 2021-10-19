@@ -8,7 +8,7 @@
     <ul>
         @forelse ($projects as $projectsItem)
 
-            <li>{{ $projectsItem->title }} <br> <small> {{ $projectsItem->description }} </small> <br> {{ $projectsItem->created_at }} </li>
+            <li><a href=" {{ route('project.show' , $projectsItem)}} ">{{ $projectsItem->title }}</a><br> <small> {{ $projectsItem->description }} </small> <br> {{ $projectsItem->created_at }} </li>
             
         @empty
        

@@ -6,7 +6,7 @@ use App\Mail\MessageReceived;
 use GuzzleHttp\Psr7\Message;
 use Illuminate\Support\Facades\Mail;
 
-class MessagesController extends Controller
+class MessageController extends Controller
 {
     public function store(){
 
