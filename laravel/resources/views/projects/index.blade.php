@@ -5,6 +5,16 @@
 @section('content')
     <h1>Portfolio</h1>
 
+    <a href=" {{ route('project.create') }} ">Crear Proyectos</a>
+
+    @if ($errors->any())
+        <ul>
+            @foreach ($errros->all() as $error)
+            <li>{{$error}}</li>    
+            @endforeach            
+        </ul>
+    @endif
+
     <ul>
         @forelse ($projects as $projectsItem)
 

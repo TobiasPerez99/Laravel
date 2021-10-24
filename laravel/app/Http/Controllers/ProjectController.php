@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -21,15 +22,30 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function show($id){
+    public function show(Project $project){
 
-        $project = Project::find($id);
+        // $project = Project::find($id);
 
         return view('projects.show' , [
 
-            'project' => Project::findorFail($id)
+            'project' => $project
+        
         ]);
 
+    }
+
+    public function create(){
+
+        return view('projects.create');
+
+    }
+    public function store(CreateProjectRequest $request){
+    
+        return $request->all();
+
+        // Project::created($request->all());
+
+        // return redirect()->route('project.index');
     }
 
 }

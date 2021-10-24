@@ -7,7 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
-    // use HasFactory;
+
+    protected $guarded = [];
+    
+    public function getRouteKeyName()
+    {
+        return 'url';
+    }
 
     
 }
