@@ -29,4 +29,14 @@ class CreateProjectRequest extends FormRequest
             'description' => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'El Proyecto necesita un titulo',
+            'url.required' => 'El Proyecto necesita una url',
+            'description.required' => 'El Proyecto necesita una descripcion',
+            
+        ];
+    }
 }

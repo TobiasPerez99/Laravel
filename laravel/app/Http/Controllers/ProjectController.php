@@ -23,9 +23,7 @@ class ProjectController extends Controller
     }
 
     public function show(Project $project){
-
-        // $project = Project::find($id);
-
+       
         return view('projects.show' , [
 
             'project' => $project
@@ -43,9 +41,30 @@ class ProjectController extends Controller
     
         return $request->all();
 
-        // Project::created($request->all());
+        Project::create($request->all());
 
-        // return redirect()->route('project.index');
+        return redirect()->route('project.index');
+    }
+
+    public function edit(Project $project){
+        
+        return view('projects.edit' , [
+
+            'project' => $project
+        
+        ]);
+
+    }
+    public function update(Request $request){
+
+        $project->update([
+
+            'title' => request('title'),
+            'url' => request('url'),
+            'description' => request('description'),
+
+        ]);
+
     }
 
 }
