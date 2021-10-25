@@ -13,7 +13,7 @@
         </ul>
     @endif
 
-    <form method="POST" action=" {{ route('project.update') }} ">
+    <form method="POST" action=" {{ route('project.update' , $project) }} ">
 
         @csrf
 
@@ -26,7 +26,7 @@
         <label for="">Titulo del Proyecto</label><br><input name="title" value="{{ $project->title}}" type="text"><br>
         <label for="">description</label><br><input name="description" value="{{ $project->description}}" type="text"><br>
         <label for="">url</label><br><input name="url"  value="{{ $project->url}}" type="text"><br>
-        <button>Guardar</button>
+        <button>Actualizar</button>
 
         
 

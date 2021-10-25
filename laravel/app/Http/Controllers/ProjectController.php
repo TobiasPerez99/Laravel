@@ -55,7 +55,7 @@ class ProjectController extends Controller
         ]);
 
     }
-    public function update(Request $request){
+    public function update(Project $project){
 
         $project->update([
 
@@ -64,6 +64,8 @@ class ProjectController extends Controller
             'description' => request('description'),
 
         ]);
+
+        return redirect()->route('project.show' , $project);
 
     }
 

@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <a href=" {{ route('project.edit' , $project) }} ">Editar Proyecto</a>
+    <a href=" {{ route('projects.edit' , $project) }} ">Editar Proyecto</a>
 
 
     <h1>{{ $project->title }}</h1>
