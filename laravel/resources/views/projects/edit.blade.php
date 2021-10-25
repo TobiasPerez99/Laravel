@@ -9,15 +9,9 @@
 
     <form method="POST" action=" {{ route('project.update' , $project) }} ">
 
-        @csrf
-
         @method('PATCH')
 
-        @include('projects._form')
-
-        <button>Actualizar</button>
-
-        
+        @include('projects._form' , ['btnText' => 'Actualizar'])
 
     </form>
 

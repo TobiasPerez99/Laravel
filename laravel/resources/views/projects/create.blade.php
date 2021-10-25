@@ -9,14 +9,8 @@
 
     <form method="POST" action=" {{ route('project.store') }} ">
 
-        @csrf
-
-        @include('projects._form')
-
-        <button>Guardar</button>
-
+        @include('projects._form' , ['btnText' => 'Guardar'])
         
-
     </form>
 
 @endsection
