@@ -6,6 +6,10 @@
 @section('content')
     <h1>Contacto</h1>
 
+    @if (session('status'))
+        {{session('status')}}
+    @else
+
     <form method="POST" action="{{ route('message.store')}}">
 
         @csrf
@@ -25,4 +29,7 @@
         <button>Enviar</button>
 
     </form>
+
+    @endif
+    
 @endsection

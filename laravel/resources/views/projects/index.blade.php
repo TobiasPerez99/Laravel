@@ -15,6 +15,7 @@
         </ul>
     @endif
 
+
     <ul>
         @forelse ($projects as $projectsItem)
 

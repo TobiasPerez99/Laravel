@@ -25,7 +25,7 @@ class MessageController extends Controller
 
         Mail::to('tobiasleonel77@gmail.com' )->queue(new MessageReceived($msg));
 
-        return 'Mensaje Enviado';
+        return back()->with('status' , 'Recibimos tu Mensaje');
 
     }
 }
