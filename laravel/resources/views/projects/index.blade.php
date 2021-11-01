@@ -5,7 +5,10 @@
 @section('content')
     <h1>Portfolio</h1>
 
-    <a href=" {{ route('project.create') }} ">Crear Proyectos</a>
+    @auth
+    <a href=" {{ route('project.create') }} ">Crear Proyectos</a>    
+    @endauth
+
 
     @if ($errors->any())
         <ul>

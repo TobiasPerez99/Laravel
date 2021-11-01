@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -21,3 +21,20 @@
     </div>
 </div>
 @endsection
+
+ --}}
+
+ @extends('layout')
+
+ @section('title' , 'Home')
+     
+
+ @section('content')
+
+ <h1>@lang('Home')</h1>
+ 
+ @auth
+    {{ auth()->user()->name }}
+ @endauth   
+
+ @endsection
