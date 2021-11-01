@@ -17,3 +17,7 @@ Route::get('/portafolio/{project?}', [ProjectController::class, 'show'])->name('
 
 Route::view('/contact', 'contact')->name('contact');
 Route::post('contact', 'App\Http\Controllers\MessageController@store')->name('message.store');
+
+Auth::routes();
+
+
