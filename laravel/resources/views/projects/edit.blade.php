@@ -22,7 +22,7 @@
         
                 @include('projects._form' , ['btnText' => 'Actualizar'])
 
-                <a class="btn btn-line btn-block" href="{{route('project.index')}}">Regresar</a>
+                <a class="btn btn-line btn-block" href="{{route('project.index')}}">Cancelar</a>
         
             </form>
         </div>

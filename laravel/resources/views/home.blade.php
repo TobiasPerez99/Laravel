@@ -1,28 +1,3 @@
-{{-- @extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
-
- --}}
 
  @extends('layout')
 
@@ -31,10 +6,21 @@
 
  @section('content')
 
- <h1>@lang('Home')</h1>
- 
- @auth
-    {{ auth()->user()->name }}
- @endauth   
+ <div class="container">
+     <div class="row">
+         <div class="col-md-12">
+            <h1 class="display-3 text-primary">Desarrollo Web</h1>
+            <p class="lead text-secondary ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti fuga labore, at quaerat accusantium sequi maiores vitae commodi nobis laudantium, nesciunt reprehenderit laborum quia et? Recusandae ab maxime perspiciatis voluptatem?</p>
+
+            <a class="btn btn-lg btn-block" href="{{route('contact')}}">Contactame</a>
+            <a class="btn btn-lg btn-block btn-outline-primary" href="{{route('project.index')}}">Porfolio</a>
+         </div>
+         <div class="col-12">
+            <img class="img-fluid mt-4 " src="\img\home.svg" alt="" srcset="">
+        </div>
+     </div>
+ </div>
+
+
 
  @endsection
