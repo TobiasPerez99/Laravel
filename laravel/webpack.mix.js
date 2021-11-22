@@ -15,7 +15,7 @@ mix.js('resources/js/app.js', 'public/js')
     .vue()
     .sass('resources/sass/app.scss', 'public/css');
 
-mix.browserSync('https://laravel.dev/');
+mix.browserSync('https://public.test/');
 
 if (mix.inProduction()) {
 
