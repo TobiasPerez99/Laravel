@@ -1,4 +1,14 @@
 @csrf
+
+    <div class="mb-4">
+        @if($project->image)
+        <div class="text-center">
+            <img src="/storage/{{$project->image}}" class="rounded" alt="...">
+        </div>
+    </div>
+
+    @endif
+
     <div class="form-group">
         <label for="title">Titulo del Proyecto</label>
             <br>
