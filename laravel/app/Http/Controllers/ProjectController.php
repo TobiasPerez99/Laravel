@@ -6,6 +6,7 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\SaveProjectRequest;
+use GuzzleHttp\Handler\Proxy;
 
 class ProjectController extends Controller
 {
@@ -48,7 +49,11 @@ class ProjectController extends Controller
     }
     public function store(SaveProjectRequest $request){
 
-        Project::create($request->all());
+        $project = new Project($request->validated());
+
+        $project->image = $request->file('image')->store('images');
+
+        $project->save();
 
         return redirect()->route('project.index')->with('status' , 'El Proyecto Fue Creado Exitosamente.');
     }
@@ -64,7 +69,7 @@ class ProjectController extends Controller
     }
     public function update(Project $project , SaveProjectRequest $request){
 
-        $project->update( $request->validated());
+        $project->update( array_filter($request->validated()) );
 
         return redirect()->route('project.show' , $project)->with('status' , 'El Proyecto Fue Editado Exitosamente.');
 
