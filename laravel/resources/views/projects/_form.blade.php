@@ -3,7 +3,7 @@
     <div class="mb-4">
         @if($project->image)
         <div class="text-center">
-            <img src="/storage/{{$project->image}}" class="rounded" alt="...">
+            <img style="height: 150px; object-fit" src="/storage/{{$project->image}}" class="rounded" alt="...">
         </div>
     </div>
 

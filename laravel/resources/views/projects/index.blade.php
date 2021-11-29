@@ -29,7 +29,7 @@
     <div class="d-flex  flex-wrap justify-content-between align-items-start">
         @forelse ($projects as $projectsItem)
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="/storage/{{$projectsItem->image}}" alt="Card image cap">
+                <img style="height: 150px; object-fit" class="card-img-top" src="/storage/{{$projectsItem->image}}" alt="Card image cap">
                 <div class="card-body text-center">                    
                   <h5 class="">{{ $projectsItem->title }}</h5>
                   <p class="card-text">{{ $projectsItem->description }}</p>

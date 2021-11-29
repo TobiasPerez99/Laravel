@@ -8,6 +8,7 @@ use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\SaveProjectRequest;
+use Intervention\Image\Facades\Image;
 
 class ProjectController extends Controller
 {
@@ -56,6 +57,13 @@ class ProjectController extends Controller
 
         $project->save();
 
+        $image = Image::make(Storage::get($project->image))
+        ->widen(600)
+        ->limitColors(255)
+        ->encode();
+    
+        Storage::put($project->image, (string) $image);
+
         return redirect()->route('project.index')->with('status' , 'El Proyecto Fue Creado Exitosamente.');
     }
 
@@ -79,7 +87,14 @@ class ProjectController extends Controller
             $project->image = $request->file('image')->store('images');
     
             $project->save();
+
+            $image = Image::make(Storage::get($project->image))
+                ->widen(600)
+                ->limitColors(255)
+                ->encode();
             
+            Storage::put($project->image, (string) $image);
+
         }else{
 
             $project->update( array_filter($request->validated()) );    
