@@ -26,25 +26,22 @@
             @endforeach            
         </ul>
     @endif
-
-
-    <ul class="list-groip">
+    <div class="d-flex  flex-wrap justify-content-between align-items-start">
         @forelse ($projects as $projectsItem)
-            <li class="list-group-item border-0 mb-3 shadow-sm">
-                <a class="text-secondary d-flex justify-content-between align-items-center" href=" {{ route('project.show' , $projectsItem)}} ">
-                <span class=" font-weight-bold">{{ $projectsItem->title }}</span>
-                <span class="text-black-50">{{$projectsItem->created_at}}</span>
-            </a><br> <small> {{ $projectsItem->description }} </small></li>
-            
-        @empty
-       
-            <h1 class="list-group-item border-0 mb-3 shadow-sm">no hay proyectos para mostrar</h1>
-
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="/storage/{{$projectsItem->image}}" alt="Card image cap">
+                <div class="card-body text-center">                    
+                  <h5 class="">{{ $projectsItem->title }}</h5>
+                  <p class="card-text">{{ $projectsItem->description }}</p>
+                  <a href="{{ route('project.show' , $projectsItem)}} " class="btn btn-primary">Ver el Proyecto</a>
+                </div>
+              </div>            
+        @empty      
+        <h1 class="list-group-item border-0 mb-3 shadow-sm">no hay proyectos para mostrar</h1>
         @endforelse
+    </div>
 
         {{ $projects->links()}}
-
-    </ul>
-
+    
 </div>
 @endsection
