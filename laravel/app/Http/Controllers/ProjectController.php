@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ProjectSaved;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use GuzzleHttp\Handler\Proxy;
@@ -57,12 +58,7 @@ class ProjectController extends Controller
 
         $project->save();
 
-        $image = Image::make(Storage::get($project->image))
-        ->widen(600)
-        ->limitColors(255)
-        ->encode();
-    
-        Storage::put($project->image, (string) $image);
+        ProjectSaved::dispatch($project);
 
         return redirect()->route('project.index')->with('status' , 'El Proyecto Fue Creado Exitosamente.');
     }
@@ -88,12 +84,7 @@ class ProjectController extends Controller
     
             $project->save();
 
-            $image = Image::make(Storage::get($project->image))
-                ->widen(600)
-                ->limitColors(255)
-                ->encode();
-            
-            Storage::put($project->image, (string) $image);
+            ProjectSaved::dispatch($project);
 
         }else{
 
