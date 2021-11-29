@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Http\Requests\SaveProjectRequest;
 use GuzzleHttp\Handler\Proxy;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\SaveProjectRequest;
 
 class ProjectController extends Controller
 {
@@ -69,12 +70,30 @@ class ProjectController extends Controller
     }
     public function update(Project $project , SaveProjectRequest $request){
 
-        $project->update( array_filter($request->validated()) );
+        if($request->hasFile('image') ){
+
+            Storage::delete($project->image);
+
+            $project = $project->fill($request->validated());
+
+            $project->image = $request->file('image')->store('images');
+    
+            $project->save();
+            
+        }else{
+
+            $project->update( array_filter($request->validated()) );    
+        
+        }
+
+        
 
         return redirect()->route('project.show' , $project)->with('status' , 'El Proyecto Fue Editado Exitosamente.');
 
     }
     public function destroy(Project $project){
+
+        Storage::delete($project->image);
 
         $project->delete();
 
