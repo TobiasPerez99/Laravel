@@ -15,12 +15,20 @@
    
         
     @endauth
+        @if ($project->image)
+            <div class="text-center">
+                <img src="/storage/{{$project->image}}" class="rounded" alt="...">
+            </div>
+        @endif
+        
 
         <h1>{{ $project->title }}</h1>
 
         <p class="text-secondary">{{ $project->description }}</p>
 
         <p class="text-black-50">{{ $project->created_at }}</p>
+
+
 
         @auth
 
