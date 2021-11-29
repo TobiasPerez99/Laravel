@@ -1,4 +1,3 @@
-
 @csrf
     <div class="form-group">
         <label for="title">Titulo del Proyecto</label>
@@ -18,5 +17,11 @@
             <input class="form-control border-0 bg-light shadow-sm" id="url" name="url"  value="{{ old('url' , $project->url )}}" type="text">
         <br>
     </div>
+    <div class="mb-4 custom-file">
+        <input type="file"  class="form-control-file custom-file-input" id="customFileLang" lang="es" name="image">
+        <label class="custom-file-label" data-browse="Buscar" for="customFileLang">Seleccionar Archivo</label>
+      </div>
 
-<button class="btn btn-primary btn-lg btn-block">{{ $btnText }}</button>
+      <br>
+
+    <button class="btn btn-primary btn-lg btn-block">{{ $btnText }}</button>
