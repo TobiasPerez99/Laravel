@@ -10,6 +10,19 @@
     @endif
 
     <div class="form-group">
+        <label for="category_id">Categoria del Proyecto</label>
+            <br>
+            <select class="form-control border-0 bg-light shadow-sm" name="category_id" id="category_id">
+                <option value="">Seleccione</option>
+                @foreach ($categories as $id => $name)
+                    <option value="{{ $id }}" 
+                    {{ $id === $project->category_id ? 'selected' : ''}}>
+                    {{ $name }}</option>
+                @endforeach
+            </select>
+            <br>
+    </div>
+    <div class="form-group">
         <label for="title">Titulo del Proyecto</label>
             <br>
             <input class="form-control border-0 bg-light shadow-sm" id="title" name="title" value="{{ old('title' , $project->title) }}" type="text">
