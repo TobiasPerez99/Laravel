@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProjectController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home')->name('home');
@@ -8,6 +10,7 @@ Route::view('/quienes-somos', 'about')->name('about');
 
 
 Route::get('/portafolio', [ProjectController::class, 'index'])->name('project.index');
+Route::get('categorias/{category}', [CategoryController::class, 'show'])->name('categories.show');
 Route::post('/portafolio', [ProjectController::class, 'store'])->name('project.store');
 Route::get('/portafolio/crear', [ProjectController::class, 'create'])->name('project.create');
 Route::patch('/portafolio/{project}', 'App\Http\Controllers\ProjectController@update')->name('project.update');

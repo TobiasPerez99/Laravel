@@ -5,7 +5,15 @@
 @section('content')
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-3">
+
+    @isset($category)
+    <div>
+        <h1 class="display-4 mb-0">{{$category->name}}</h1>    
+        <a href="{{ route('project.index') }}">Volver a los proyectos</a>
+    </div>
+    @else    
     <h1 class="display-4 mb-0">Portfolio</h1>
+    @endisset
 
     @auth
 
@@ -21,7 +29,7 @@
 
     @if ($errors->any())
         <ul>
-            @foreach ($errros->all() as $error)
+            @foreach ($erros->all() as $error)
             <li>{{$error}}</li>    
             @endforeach            
         </ul>
@@ -33,7 +41,13 @@
                 <div class="card-body text-center">                    
                   <h5 class="">{{ $projectsItem->title }}</h5>
                   <p class="card-text">{{ $projectsItem->description }}</p>
-                  <a href="{{ route('project.show' , $projectsItem)}} " class="btn btn-primary">Ver el Proyecto</a>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="{{ route('project.show' , $projectsItem)}} " class="btn btn-primary">Ver el Proyecto</a>
+                        @if ($projectsItem->category_id)
+                        <a href="{{ route('categories.show',$projectsItem->category)}}" class="badge badge-secondary">
+                            {{$projectsItem->category->name}}</a>    
+                        @endif                        
+                    </div>
                 </div>
               </div>            
         @empty      

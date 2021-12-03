@@ -9,6 +9,11 @@ class Category extends Model
 {
     use HasFactory;
 
+    public function getRouteKey()
+    {
+        return 'url';
+    }
+
     Public function projects(){
 
         return $this->hasMany(Project::class);

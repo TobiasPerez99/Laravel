@@ -25,7 +25,7 @@ class SaveProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id' => ['required' , 'exist:categories,id'],
+            'category_id' => ['required' , 'exists :categories,id'],
             'title' => 'required',
             'url' => [
                     'required' ,

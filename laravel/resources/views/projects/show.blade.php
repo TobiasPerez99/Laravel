@@ -20,6 +20,11 @@
                 <img src="/storage/{{$project->image}}" class="rounded" alt="...">
             </div>
         @endif
+
+        @if ($project->category_id)
+        <a href="{{ route('categories.show',$project->category)}}" class="badge badge-secondary">
+            {{$project->category->name}}</a>    
+        @endif   
         
 
         <h1>{{ $project->title }}</h1>
@@ -35,6 +40,7 @@
         <div class="d-flex justify-content-between">
 
             <div class="btn-group btn-group-sm px-1 rounded">
+        
 
                 <a class="btn m-1 rounded btn-primary" href="{{route('project.index')}}">Regresar</a>
 
